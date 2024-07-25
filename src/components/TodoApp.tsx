@@ -1,8 +1,9 @@
 import { useState } from "react";
+import ListTask from "./ListTask";
 
 const TodoApp = () => {
-  const [newTask, setNewTask] = useState("");
-  const [todo, setTodo] = useState([]);
+  const [newTask, setNewTask] = useState<string>("");
+  const [todo, setTodo] = useState<string[]>([]);
 
   //console.log(newTask);
 
@@ -20,6 +21,7 @@ const TodoApp = () => {
         />
         <button onClick={handleAddTask}></button>
       </div>
+      <ListTask listTask={todo} />
     </div>
   );
 };
