@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ListTask from "./ListTask";
+import ThingsTodo from "./ThingsTodo";
 
 const TodoApp = () => {
   const [newTask, setNewTask] = useState<string>("");
@@ -7,7 +7,15 @@ const TodoApp = () => {
 
   //console.log(newTask);
 
-  const handleAddTask = () => {};
+  const handleAddTask = () => {
+    if (newTask.trim() === "") return;
+    setTodo((prev) => [...prev, newTask]);
+    setNewTask("");
+  };
+
+  const handleDeleteTask = (index: number) => {
+    setTodo((task) => task.filter((_, i) => i !== index));
+  };
 
   return (
     <div>
@@ -19,9 +27,10 @@ const TodoApp = () => {
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="Nueva Tarea"
         />
-        <button onClick={handleAddTask}></button>
+        <button onClick={handleAddTask}>Agregar Tarea</button>
       </div>
-      <ListTask listTask={todo} />
+
+      <ThingsTodo list={todo} deleteTask={handleDeleteTask} />
     </div>
   );
 };

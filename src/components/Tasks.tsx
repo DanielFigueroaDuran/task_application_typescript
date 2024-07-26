@@ -3,7 +3,7 @@ type Task = {
   deleteTask: () => void;
 };
 
-const Task = ({ task, deleteTask }: Task) => {
+const Tasks = ({ task, deleteTask }: Task) => {
   return (
     <div className="task">
       <span>{task}</span>
@@ -12,4 +12,4 @@ const Task = ({ task, deleteTask }: Task) => {
   );
 };
 
-export default Task;
+export default Tasks;
